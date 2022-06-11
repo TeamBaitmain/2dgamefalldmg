@@ -143,4 +143,10 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+	public void Brake()
+    {
+		m_Rigidbody2D.velocity = Vector3.zero;
+	}
+
 }
