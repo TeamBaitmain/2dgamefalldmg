@@ -25,7 +25,7 @@ public class JumpChargeDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        jumpChargeText.text = "Charge: " + jumpCharge + "%";
+        jumpChargeText.text = "Charge: " + Math.Floor(jumpCharge * 50) + "%";
 
 
         jumpCharge = playerMovement.jumpCharge;
