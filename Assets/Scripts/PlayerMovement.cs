@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCharge = 0f;  // Sprunghoehe, wird mit delta zw pressed und  released Jump aufgeladen, min und max einbauen!
     public float maxJumpCharge = 5f;
     public float minJumpCharge = 0.25f;
-    float jumpDir = 0f; // Bestimmt die Richtung des Sprunges, vllt ueber horizontal force regeln??
+    //float jumpDir = 0f; // (Auskommentiert solange ungenutzt; sonst gibt das ein Warning) Bestimmt die Richtung des Sprunges, vllt ueber horizontal force regeln??
 
     // Start is called before the first frame update
     void Start()
