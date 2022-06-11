@@ -507,7 +507,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -190.07098, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1213,6 +1213,7 @@ GameObject:
   - component: {fileID: 1540430943}
   - component: {fileID: 1540430946}
   - component: {fileID: 1540430947}
+  - component: {fileID: 1540430948}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1399,3 +1400,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &1540430948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540430938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cf3bc0d226b054aafd537444aa135b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpChargeText: {fileID: 1253335298}
+  jumpChargeBar: {fileID: 1362976558}
+  playerMovement: {fileID: 1540430945}
