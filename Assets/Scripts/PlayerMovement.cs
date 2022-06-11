@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
     public Slider jumpChargeSlider;
 
-
     float horizontalMove = 0f;
     public float runSpeed = 40f;
     
@@ -29,16 +28,28 @@ public class PlayerMovement : MonoBehaviour
     public float minJumpCharge = 0.25f;
     //float jumpDir = 0f; // (Auskommentiert solange ungenutzt; sonst gibt das ein Warning) Bestimmt die Richtung des Sprunges, vllt ueber horizontal force regeln??
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         jumpForce = controller.m_JumpForce;
+
+        // Used for movement animation
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+        // Play run animation if player is running
+        if(horizontalMove != 0){
+            anim.SetBool("isRunning", true);
+        } else {
+            anim.SetBool("isRunning", false);
+        }
 
         if ( Input.GetButtonDown("Jump"))
         {
