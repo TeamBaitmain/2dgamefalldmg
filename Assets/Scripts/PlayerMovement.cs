@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float minJumpCharge = 0.25f;
     //float jumpDir = 0f; // (Auskommentiert solange ungenutzt; sonst gibt das ein Warning) Bestimmt die Richtung des Sprunges, vllt ueber horizontal force regeln??
 
+    public float horizontalJumpSpeed = 100f;
     public Animator anim;
 
     // Start is called before the first frame update
@@ -54,10 +55,15 @@ public class PlayerMovement : MonoBehaviour
         if ( Input.GetButtonDown("Jump"))
         {
             chargingJump = true;
+
+            // Stop the momentum of the player
+            controller.Brake();
         }
         if (Input.GetButtonUp("Jump"))
         {
             jump = true;
+            
+            
         }
 
     }
@@ -84,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
             }
             controller.m_JumpForce = jumpForce * jumpCharge;
 
-            controller.Move(horizontalMove * Time.fixedDeltaTime * jumpCharge, false, true);
+            //controller.Move(horizontalMove * Time.fixedDeltaTime * jumpCharge, false, true);
+            controller.Move( Input.GetAxisRaw("Horizontal") * horizontalJumpSpeed * Time.fixedDeltaTime * jumpCharge, false, true);
 
             chargingJump = false;
             jumpCharge = 0f;

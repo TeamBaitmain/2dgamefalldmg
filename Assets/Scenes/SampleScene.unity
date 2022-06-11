@@ -1570,6 +1570,7 @@ MonoBehaviour:
   jumpCharge: 0
   maxJumpCharge: 2
   minJumpCharge: 0.25
+  horizontalJumpSpeed: 100
   anim: {fileID: 1540430950}
 --- !u!114 &1540430948
 MonoBehaviour:
