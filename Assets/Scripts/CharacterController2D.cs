@@ -19,6 +19,7 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
+
 	[Header("Events")]
 	[Space]
 
@@ -63,6 +64,9 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
+
+
+
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{
