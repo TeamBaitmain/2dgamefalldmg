@@ -15,11 +15,13 @@ public class FallDamage : MonoBehaviour
     public Rigidbody2D m_Rigidbody2D;
 
     float x, y;
-    bool jumping = false;
+    //bool jumping = false;
     bool falling = false;
 
-    float fallDuration = 0f;
-
+    //float fallDuration = 0f;
+    float jumpCeiling = 0f;
+    bool jumpCeilingSet = false; 
+    public float fallDamageMultiplier = 1;
 
 
     public float maxPlayerHealth = 100f;
@@ -30,8 +32,6 @@ public class FallDamage : MonoBehaviour
     {
         //m_Rigidbody2D = GetComponent<Rigidbody2D>();
         playerHealth = maxPlayerHealth;
-
-
     }
 
     // Start is called before the first frame update
@@ -46,24 +46,30 @@ public class FallDamage : MonoBehaviour
         x = m_Rigidbody2D.velocity.x;
         y = m_Rigidbody2D.velocity.y;
 
-        if (y < 0 )
+        //required to ensure the jumpCeiling is only set once when reaching the peak of the jump
+        if (y < 0 && jumpCeilingSet == false)
         {
             falling = true;
+            jumpCeilingSet = true;
+            jumpCeiling = (float)transform.position.y;
         }
 
-
-
-        // Landung
+        // Landing
         if (y == 0 && falling)
         {
-            if (fallDuration > fallTolerance)
+            /*if (fallDuration > fallTolerance)
             {
-                playerHealth -= (fallDuration - fallTolerance);
+                //playerHealth -= (fallDuration - fallTolerance);
+                
+            }*/
+            float fallHeight = jumpCeiling-(float)transform.position.y;
+            if (fallHeight > fallTolerance){
+                playerHealth -= fallHeight*fallDamageMultiplier;
             }
-
-            fallDuration = 0;
+            Debug.Log(fallHeight);
+            //fallDuration = 0;
             falling = false;
-
+            jumpCeilingSet = false;
         }
 
 
@@ -74,10 +80,10 @@ public class FallDamage : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ( falling )
+        /*if ( falling )
         {
             fallDuration += 1;
-        }
+        }*/
     }
 
 
