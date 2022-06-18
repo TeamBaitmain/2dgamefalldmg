@@ -26,12 +26,14 @@ public class FallDamage : MonoBehaviour
 
     public float maxPlayerHealth = 100f;
     private float playerHealth;
+    private float healthBarStatus;
     public float fallTolerance = 5f;
 
     private void Awake()
     {
         //m_Rigidbody2D = GetComponent<Rigidbody2D>();
         playerHealth = maxPlayerHealth;
+        healthBarStatus = 1f;
     }
 
     // Start is called before the first frame update
@@ -65,6 +67,7 @@ public class FallDamage : MonoBehaviour
             float fallHeight = jumpCeiling-(float)transform.position.y;
             if (fallHeight > fallTolerance){
                 playerHealth -= fallHeight*fallDamageMultiplier;
+                healthBarStatus -= (fallHeight*fallDamageMultiplier*0.87f)/maxPlayerHealth; //required because the health bar is is empty when the HealthBar sprite is at ~13.3% fill
             }
             Debug.Log(fallHeight);
             //fallDuration = 0;
@@ -89,6 +92,6 @@ public class FallDamage : MonoBehaviour
 
     void BarFiller()
     {
-        healthBar.fillAmount = playerHealth / maxPlayerHealth;
+        healthBar.fillAmount = healthBarStatus;
     }
 }
